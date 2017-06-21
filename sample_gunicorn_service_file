@@ -1,0 +1,9 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=bash_user
+Group=www-data
+WorkingDirectory=/home/bash_user/project_name
+ExecStart=/home/bash_user/project_name/project_name_venv/bin/python3 /home/bash_user/project_name/project_name_venv/bin/gunicorn --workers 3 -b :8000 project_name.wsgi:application
